@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Completar Palabras con Letras Faltantes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .exercise-container {
+            margin-bottom: 30px;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .input-space {
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-right: 5px;
+            width: 30px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .result-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+        .incorrect {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function checkAnswers() {
+            const correctAnswers = ['A', 'S', 'R', 'U', 'O'];
+            const inputs = document.querySelectorAll('.input-space');
+            const resultContainer = document.getElementById('result-container');
+            resultContainer.innerHTML = '';
+            
+            inputs.forEach((input, index) => {
+                const userAnswer = input.value.toUpperCase();
+                const isCorrect = userAnswer === correctAnswers[index];
+
+                const result = document.createElement('p');
+                result.innerHTML = `Pregunta ${index + 1}: ${isCorrect ? '<span class="correct">✓ Correcto</span>' : '<span class="incorrect">✗ Incorrecto</span>'}`;
+                resultContainer.appendChild(result);
+            });
+
+            resultContainer.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <h1>Ejercicio: Completar Palabras con Letras Faltantes</h1>
+    <p>Completa las palabras escribiendo las letras que faltan en los espacios vacíos:</p>
+
+    <div class="exercise-container">
+        <p class="question">1. C _ S A</p>
+        <input type="text" class="input-space" maxlength="1"> <!-- Input for A -->
+    </div>
+
+    <div class="exercise-container">
+        <p class="question">2. _ O L</p>
+        <input type="text" class="input-space" maxlength="1"> <!-- Input for S -->
+    </div>
+
+    <div class="exercise-container">
+        <p class="question">3. P E _ R O</p>
+        <input type="text" class="input-space" maxlength="1"> <!-- Input for R -->
+    </div>
+
+    <div class="exercise-container">
+        <p class="question">4. L _ N A</p>
+        <input type="text" class="input-space" maxlength="1"> <!-- Input for U -->
+    </div>
+
+    <div class="exercise-container">
+        <p class="question">5. G A T _</p>
+        <input type="text" class="input-space" maxlength="1"> <!-- Input for O -->
+    </div>
+
+    <button class="submit-btn" onclick="checkAnswers()">Enviar Respuestas</button>
+
+    <div id="result-container" class="result-container">
+        <!-- Results will be displayed here -->
+    </div>
+</body>
+</html>
